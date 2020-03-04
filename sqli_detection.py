@@ -44,6 +44,11 @@ class SqliDetection():
 
 
 if __name__ == "__main__":
-    sqlidetection = SqliDetection('http://testphp.vulnweb.com/listproducts.php?cat=1')
+    import argparse
+    parser = argparse.ArgumentParser(description='Detect if the URL is vulnerable using sqli')
+    parser.add_argument('url', help='The target url, such as http://example.com/index.php?id=1')
+
+    args = parser.parse_args()
+    sqlidetection = SqliDetection(args.url)
     sqlidetection.boolean_based_detect()
     print(sqlidetection.vulnerable)

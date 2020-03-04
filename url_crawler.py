@@ -57,7 +57,13 @@ class URLCrawler():
             if len(self.new_urls) == 0:
                 break
 
+
 if __name__ == "__main__":
-    url_crawler = URLCrawler('http://testphp.vulnweb.com/')
+    import argparse
+    parser = argparse.ArgumentParser(description='Crawl urls of the target website')
+    parser.add_argument('target', help='The target website, such as http://example.com')
+
+    args = parser.parse_args()
+    url_crawler = URLCrawler(args.target)
     url_crawler.run()
     # print(url_crawler.old_urls)
